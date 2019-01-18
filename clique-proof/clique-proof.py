@@ -27,7 +27,7 @@ def transform3SAT2CLIQUE(sat):
                 if i[1]["name"] != j[1]["name"] or i[1]["value"] != j[1]["value"]:
                     G.add_edge(i[0], j[0])
 
-    nx.draw(G, with_labels=True, node_color='skyblue', node_size=1500)
+    nx.draw(G, with_labels=True, width=2, edge_color="grey", node_color='skyblue', node_size=1500, pos=nx.circular_layout(G))
     plt.show()
 
     clique = Clique(G, k)
