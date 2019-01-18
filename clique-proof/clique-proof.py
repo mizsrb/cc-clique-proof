@@ -17,6 +17,8 @@ def transform3SAT2CLIQUE(sat):
     for clause in range(len(sat.clauses)):
         for literal in sat.clauses[clause].literals:
             node = "C" + str(clause) + "-" + literal.name
+            if literal.value == False:
+                node = "~" + node
             G.add_node(node, clause=clause, name=literal.name, value=literal.value)
 
     for i in G.nodes(data=True):
@@ -25,7 +27,7 @@ def transform3SAT2CLIQUE(sat):
                 if i[1]["name"] != j[1]["name"] or i[1]["value"] != j[1]["value"]:
                     G.add_edge(i[0], j[0])
 
-    nx.draw(G, with_labels=True, node_color='skyblue')
+    nx.draw(G, with_labels=True, node_color='skyblue', node_size=1500)
     plt.show()
 
     clique = Clique(G, k)
