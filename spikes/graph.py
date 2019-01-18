@@ -21,7 +21,7 @@ for clique in cliques:
     print(clique)
     input()
     for node in clique:
-
+        pass
 
 nx.draw(G)
 plt.show()
